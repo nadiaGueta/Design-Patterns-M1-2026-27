@@ -1,7 +1,12 @@
 import { Duck } from "./Duck";
+import { FlyWithWings } from "./FlyWithWings";
 
-export class Mallard extends Duck {
-  display() {
-    console.log("I'm a mallard duck!");
+export class MallardDuck extends Duck {
+
+   constructor() {
+    super(new FlyWithWings());
+  }
+  display() : string {
+   return "I'm a mallard duck!";
   }
 }
