@@ -1,15 +1,15 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"target": "es5",
+		"target": "es2022",
 		"strict": true,
 		"noImplicitAny": false,
 		"sourceMap": true,
-		"baseUrl": "./",
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
+		"types": ["vitest/globals"],
 		"paths": {
-			"@/*": ["app/*"]
+			"@/*": ["./app/*"]
 		}
 	},
 	"exclude": ["node_modules"]
