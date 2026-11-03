@@ -11,3 +11,10 @@ export class PaypalPayment {
     console.log(`Paypal payment of ${amount} ${currency}`);
   }
 }
+
+
+export class ApplePayPayment {
+  processTransaction(amount: number, currency: string): void {
+    console.log(`Apple Pay : ${amount} ${currency}`);
+  }
+}
