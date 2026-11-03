@@ -3,10 +3,18 @@ import {
   MarinaraSauce,
   ReggianoCheese,
 } from "@/ingredients/ingredients";
+import { PizzaIngredientFactory } from "@/PizzaIngredientFactory";
 
 export abstract class Pizza {
+  
   protected name!: string;
+ getName(): string {
+    return this.name;
+  }
 
+  setName(name: string): void {
+  this.name = name;
+}
   abstract prepare(): void;
 
   bake(): void {
@@ -23,11 +31,52 @@ export abstract class Pizza {
 }
 
 export class CheesePizza extends Pizza {
+
+    constructor(
+    private ingredientFactory: PizzaIngredientFactory
+  ) {
+    super();
+    this.name = "Cheese Pizza";
+  }
   prepare(): void {
     console.log(`Preparing ${this.name}`);
 
-    const dough = new ThinCrustDough(); // ❌ dépendance concrète
-    const sauce = new MarinaraSauce();
-    const cheese = new ReggianoCheese();
+    const dough = this.ingredientFactory.createDough(); // ❌ dépendance concrète
+    const sauce = this.ingredientFactory.createSauce()
+    const cheese = this.ingredientFactory.createCheese()
+  }
+}
+export class VeggiePizza extends Pizza {
+
+    constructor(
+    private ingredientFactory: PizzaIngredientFactory
+  ) {
+    super();
+    this.name = "Veggie Pizza";
+  }
+  prepare(): void {
+    console.log(`Preparing ${this.name}`);
+
+    const dough = this.ingredientFactory.createDough(); 
+    const sauce = this.ingredientFactory.createSauce()
+    const cheese = this.ingredientFactory.createCheese()
+  }
+
+
+}
+  export class PepperoniPizza extends Pizza {
+
+    constructor(
+    private ingredientFactory: PizzaIngredientFactory
+  ) {
+    super();
+    this.name = "Pepperoni Pizza";
+  }
+  prepare(): void {
+    console.log(`Preparing ${this.name}`);
+
+    const dough = this.ingredientFactory.createDough(); 
+    const sauce = this.ingredientFactory.createSauce()
+    const cheese = this.ingredientFactory.createCheese()
   }
 }
